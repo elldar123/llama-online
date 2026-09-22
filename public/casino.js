@@ -1,6 +1,7 @@
 (() => {
   "use strict";
   /* L.L.A.M.A CASINO - tiny self-contained (ASCII only) */
+  function q(x) { return document.getElementById(x); }
   const R = document.getElementById("casinoRoot");
   if (!R) return;
   /* ---- state ---- */
