@@ -1,0 +1,19 @@
+{
+  "name": "lama-live",
+  "version": "1.0.0",
+  "description": "Canli oynanan L.L.A.M.A kart oyunu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "online": "node online.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "localtunnel": "^2.0.2",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.3"
+  }
+}

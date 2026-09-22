@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L.L.A.M.A — Canlı Kart Oyunu</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦙</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="joinScreen" class="screen">
+    <div class="join-card">
+      <div class="logo">
+        <div class="logo-llama" id="heroLlama">🦙</div>
+        <h1>L<span>·</span>L<span>·</span>A<span>·</span>M<span>·</span>A</h1>
+        <p class="tagline">Reiner Knizia'nın canlı kart oyunu — 2-6 oyuncu, gerçek zamanlı masada.</p>
+      </div>
+      <div class="join-form">
+        <label for="nameInput">Adın</label>
+        <input id="nameInput" maxlength="16" placeholder="Adın..." autocomplete="off">
+        <div class="join-actions">
+          <button id="createBtn" class="btn btn-primary">Oda Kur</button>
+          <div class="or">veya</div>
+          <div class="join-row">
+            <input id="codeInput" maxlength="4" placeholder="KOD" class="code-input" autocomplete="off">
+            <button id="joinBtn" class="btn">Katıl</button>
+          </div>
+        </div>
+        <div id="msg" class="msg"></div>
+        <div class="casino-launch">
+          <button id="casinoBtn" class="btn btn-casino" type="button">🎰 Casino Oyunları (Tek Oyunculu)</button>
+        </div>
+      </div>
+    </div>
+    <p class="howto">
+        <b>Nasıl oynanır?</b> Sıra sende: elindekilerle <b>aynı</b> veya <b>1 üst</b> değerde kart oyna,
+        kart çek ya da turdan çekil. L.L.A.M.A (🦙) her <b>6</b>'nın ve diğer lamaların üstüne oynanır;
+        lamanın üstüne de lama ya da <b>1</b> gelir. Elini bitiren 1 jeton iade eder.
+        Biri <b>40 puan</b>a ulaşınca en az puanı olan kazanır.
+      </p>
+    </div>
+  </div>
+
+  <div id="gameScreen" class="screen hidden">
+    <header class="topbar">
+      <div class="brand">🦙 <b>L·L·A·M·A</b> <span id="connDot" class="dot"></span></div>
+      <div class="roominfo">
+        <span class="chip" id="roundChip">Tur —</span>
+        <span class="chip" id="roomChip" title="Oda kodunu kopyala">Oda: — <small>kopyala</small></span>
+        <span class="chip" id="phaseChip">—</span>
+        <button id="soundBtn" class="chip-btn" title="Ses aç/kapat">🔊</button>
+      </div>
+    </header>
+
+    <section id="opponents" class="opponents"></section>
+
+    <main class="table" id="table">
+      <div class="felt">
+        <div class="hint" id="hint"></div>
+        <div class="center-field">
+          <div id="discard" class="pile">
+            <div class="pile-label">Atılan destenin üstü</div>
+            <div id="discardCard"></div>
+          </div>
+          <div class="center-arrow" id="centerArrow">➡</div>
+          <div id="drawpile" class="pile">
+            <div class="pile-label">Çekme destesi</div>
+            <div id="drawCard" class="draw-stack"><span id="drawCount" class="draw-count">0</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="hand-area">
+      <div class="turn-bar" id="turnBar"></div>
+      <div id="hand" class="hand"></div>
+      <div id="actions" class="actions">
+        <button id="drawBtn" class="btn">🃏 Kart Çek</button>
+        <button id="quitBtn" class="btn btn-warn">🚪 Tura Çekil</button>
+      </div>
+    </div>
+
+    <div id="log" class="log"></div>
+  </div>
+
+  <div id="banner" class="banner hidden"></div>
+  <div id="toast"></div>
+
+  <div id="casinoRoot"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+  <script src="casino.js"></script>
+</body>
+</html>
