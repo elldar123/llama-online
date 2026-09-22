@@ -313,5 +313,9 @@
   /* -- bootstrap -- */
   const b = document.getElementById("casinoBtn");
   if (b) b.onclick = () => { const j = document.getElementById("joinScreen"); if (j) j.classList.add("hidden"); lobby(); };
-  if (window.__autoCasino) { const j = document.getElementById("joinScreen"); if (j) j.classList.add("hidden"); lobby(); }
+  try {
+    if (window.__autoCasino) { const j = document.getElementById("joinScreen"); if (j) j.classList.add("hidden"); lobby(); }
+  } catch (e) {
+    document.body.insertAdjacentHTML("beforeend", "<div style=\"position:fixed;top:0;left:0;right:0;background:#b00020;color:#fff;z-index:99999;padding:10px;font:14px monospace;white-space:pre-wrap\">CASINO_HATASI: " + (e && e.stack ? e.stack : String(e)) + "</div>");
+  }
 })();
